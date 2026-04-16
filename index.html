@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Howl & Bloom — Coffee House · Sober Social Lounge · Hopkins, MN</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --linen:     #F5EDE4;
+      --caramel:   #D9A87C;
+      --chestnut:  #A0674A;
+      --espresso:  #5C3D2E;
+      --midnight:  #1E2535;
+      --slate:     #3A4460;
+      --dusk:      #7B9DC8;
+      --mist:      #C8D4F0;
+      --off-white: #FAF6F1;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--off-white);
+      color: var(--espresso);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      line-height: 1.7;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 48px;
+      background: rgba(250, 246, 241, 0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--caramel);
+    }
+
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 400;
+      font-size: 20px;
+      color: var(--espresso);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+    }
+
+    .nav-logo span {
+      color: var(--chestnut);
+      font-style: italic;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      font-weight: 500;
+      color: var(--chestnut);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--espresso); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1px 1fr;
+    }
+
+    .hero-day {
+      background: var(--linen);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 120px 72px 80px 72px;
+    }
+
+    .hero-night {
+      background: var(--midnight);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 120px 72px 80px 72px;
+    }
+
+    .hero-divider {
+      background: linear-gradient(to bottom, transparent, var(--chestnut) 20%, var(--slate) 80%, transparent);
+      position: relative;
+    }
+
+    .hero-badge {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 80px;
+      height: 80px;
+      background: var(--off-white);
+      border: 1px solid var(--caramel);
+      box-shadow: 0 0 0 8px var(--off-white);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px;
+      color: var(--chestnut);
+      z-index: 2;
+    }
+
+    .eyebrow {
+      font-size: 10px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      font-weight: 500;
+      color: var(--chestnut);
+      margin-bottom: 20px;
+    }
+
+    .eyebrow-night {
+      color: var(--dusk);
+    }
+
+    .hero-headline {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-size: clamp(48px, 5vw, 72px);
+      line-height: 1.1;
+      color: var(--espresso);
+      margin-bottom: 24px;
+    }
+
+    .hero-headline-night {
+      color: var(--mist);
+    }
+
+    .hero-body {
+      font-size: 15px;
+      color: var(--chestnut);
+      max-width: 380px;
+      margin-bottom: 40px;
+    }
+
+    .hero-body-night {
+      color: var(--dusk);
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 13px 30px;
+      border: 1px solid var(--chestnut);
+      color: var(--espresso);
+      background: transparent;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      font-weight: 500;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .btn:hover { background: var(--espresso); color: var(--linen); }
+
+    .btn-night {
+      border-color: var(--slate);
+      color: var(--mist);
+    }
+
+    .btn-night:hover { background: var(--mist); color: var(--midnight); }
+
+    /* ── TAGLINE BAND ── */
+    .tagline-band {
+      background: var(--espresso);
+      text-align: center;
+      padding: 28px 40px;
+    }
+
+    .tagline-band p {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: clamp(18px, 2.5vw, 26px);
+      color: var(--caramel);
+      font-weight: 300;
+    }
+
+    /* ── ABOUT ── */
+    .about {
+      max-width: 880px;
+      margin: 100px auto;
+      padding: 0 40px;
+      text-align: center;
+    }
+
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-size: clamp(36px, 4vw, 56px);
+      color: var(--espresso);
+      margin-bottom: 24px;
+      line-height: 1.15;
+    }
+
+    .section-body {
+      font-size: 16px;
+      color: var(--chestnut);
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    .divider-line {
+      width: 60px;
+      height: 1px;
+      background: var(--caramel);
+      margin: 40px auto;
+    }
+
+    /* ── HOURS / EXPERIENCE ── */
+    .experience {
+      background: var(--linen);
+      padding: 90px 40px;
+    }
+
+    .experience-inner {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .exp-header {
+      text-align: center;
+      margin-bottom: 64px;
+    }
+
+    .exp-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2px;
+      background: var(--caramel);
+    }
+
+    .exp-card {
+      background: var(--linen);
+      padding: 40px 28px;
+    }
+
+    .exp-card:last-child {
+      background: var(--midnight);
+    }
+
+    .exp-time {
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      font-weight: 500;
+      color: var(--chestnut);
+      margin-bottom: 12px;
+    }
+
+    .exp-card:last-child .exp-time { color: var(--dusk); }
+
+    .exp-mode {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 26px;
+      font-weight: 300;
+      color: var(--espresso);
+      margin-bottom: 14px;
+    }
+
+    .exp-card:last-child .exp-mode { color: var(--mist); }
+
+    .exp-desc {
+      font-size: 13px;
+      color: var(--chestnut);
+      line-height: 1.65;
+    }
+
+    .exp-card:last-child .exp-desc { color: var(--dusk); }
+
+    /* ── STATS ── */
+    .stats {
+      background: var(--midnight);
+      padding: 90px 40px;
+    }
+
+    .stats-inner {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .stats-header {
+      text-align: center;
+      margin-bottom: 64px;
+    }
+
+    .stats-header .eyebrow { color: var(--dusk); }
+
+    .stats-header .section-title { color: var(--mist); }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+    }
+
+    .stat-card {
+      border-top: 1px solid var(--slate);
+      padding: 40px 28px 28px;
+    }
+
+    .stat-card:nth-child(2) {
+      background: var(--espresso);
+    }
+
+    .stat-number {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 52px;
+      font-weight: 300;
+      color: var(--mist);
+      line-height: 1;
+      margin-bottom: 14px;
+    }
+
+    .stat-card:nth-child(2) .stat-number { color: var(--linen); }
+
+    .stat-label {
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--dusk);
+    }
+
+    .stat-card:nth-child(2) .stat-label { color: var(--caramel); }
+
+    /* ── WHO WE SERVE ── */
+    .who {
+      max-width: 1000px;
+      margin: 100px auto;
+      padding: 0 40px;
+    }
+
+    .who-header {
+      text-align: center;
+      margin-bottom: 64px;
+    }
+
+    .who-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 40px;
+    }
+
+    .who-card {
+      border-top: 1px solid var(--caramel);
+      padding-top: 28px;
+    }
+
+    .who-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px;
+      font-weight: 400;
+      color: var(--espresso);
+      margin-bottom: 12px;
+    }
+
+    .who-desc {
+      font-size: 14px;
+      color: var(--chestnut);
+      line-height: 1.65;
+    }
+
+    /* ── DIFFERENTIATORS ── */
+    .different {
+      background: var(--espresso);
+      padding: 90px 40px;
+      text-align: center;
+    }
+
+    .different-inner {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .different .eyebrow { color: var(--caramel); }
+    .different .section-title { color: var(--linen); margin-bottom: 60px; }
+
+    .diff-list {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2px;
+      text-align: left;
+      background: var(--chestnut);
+    }
+
+    .diff-item {
+      background: var(--espresso);
+      padding: 28px 32px;
+      font-size: 15px;
+      color: var(--linen);
+    }
+
+    .diff-item strong {
+      display: block;
+      font-weight: 500;
+      color: var(--caramel);
+      margin-bottom: 6px;
+      font-size: 13px;
+      letter-spacing: 0.08em;
+    }
+
+    /* ── CONTACT / CTA ── */
+    .cta {
+      background: var(--linen);
+      text-align: center;
+      padding: 100px 40px;
+    }
+
+    .cta .section-title { margin-bottom: 16px; }
+
+    .cta p {
+      font-size: 15px;
+      color: var(--chestnut);
+      margin-bottom: 40px;
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-filled {
+      background: var(--espresso);
+      color: var(--linen);
+      border-color: var(--espresso);
+    }
+
+    .btn-filled:hover { background: var(--chestnut); border-color: var(--chestnut); color: var(--linen); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--midnight);
+      padding: 48px 48px 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      flex-wrap: wrap;
+      gap: 24px;
+    }
+
+    .footer-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px;
+      font-weight: 300;
+      color: var(--mist);
+    }
+
+    .footer-logo span { font-style: italic; color: var(--dusk); }
+
+    .footer-sub {
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--slate);
+      margin-top: 6px;
+    }
+
+    .footer-right {
+      text-align: right;
+      font-size: 12px;
+      color: var(--slate);
+    }
+
+    .footer-right a { color: var(--dusk); text-decoration: none; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; grid-template-rows: 1fr auto 1fr; }
+      .hero-divider { height: 1px; width: 100%; background: linear-gradient(to right, transparent, var(--chestnut) 30%, var(--slate) 70%, transparent); }
+      .hero-badge { display: none; }
+      .hero-day, .hero-night { padding: 80px 40px 60px; }
+      .exp-grid { grid-template-columns: repeat(2, 1fr); }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .who-grid { grid-template-columns: repeat(2, 1fr); }
+      .diff-list { grid-template-columns: 1fr; }
+      nav { padding: 16px 24px; }
+      .nav-links { display: none; }
+    }
+
+    @media (max-width: 600px) {
+      .exp-grid, .stats-grid, .who-grid { grid-template-columns: 1fr; }
+      .hero-day, .hero-night { padding: 60px 28px 48px; }
+      footer { flex-direction: column; align-items: flex-start; }
+      .footer-right { text-align: left; }
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-day > *, .hero-night > * {
+      animation: fadeUp 0.8s ease both;
+    }
+
+    .hero-day > *:nth-child(1) { animation-delay: 0.1s; }
+    .hero-day > *:nth-child(2) { animation-delay: 0.25s; }
+    .hero-day > *:nth-child(3) { animation-delay: 0.4s; }
+    .hero-day > *:nth-child(4) { animation-delay: 0.55s; }
+
+    .hero-night > *:nth-child(1) { animation-delay: 0.2s; }
+    .hero-night > *:nth-child(2) { animation-delay: 0.35s; }
+    .hero-night > *:nth-child(3) { animation-delay: 0.5s; }
+    .hero-night > *:nth-child(4) { animation-delay: 0.65s; }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-logo">Howl <span>&</span> Bloom</a>
+    <ul class="nav-links">
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#community">Community</a></li>
+      <li><a href="#contact">Visit</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-day">
+      <p class="eyebrow">Morning · Hopkins, Minnesota</p>
+      <h1 class="hero-headline">The coffee house<br><em>that never rushes you.</em></h1>
+      <p class="hero-body">Specialty pour-overs, seasonal lattes, house-baked pastries. A warm place to start your day with genuine care.</p>
+      <a href="#experience" class="btn">Explore the Menu</a>
+    </div>
+
+    <div class="hero-divider">
+      <div class="hero-badge">&</div>
+    </div>
+
+    <div class="hero-night">
+      <p class="eyebrow eyebrow-night">Evening · No Alcohol. Ever.</p>
+      <h1 class="hero-headline hero-headline-night">The bar that<br><em>never lets you down.</em></h1>
+      <p class="hero-body hero-body-night">Craft mocktails, NA wines, adaptogen drinks. A sophisticated social lounge where everyone belongs.</p>
+      <a href="#contact" class="btn btn-night">Get Notified at Opening</a>
+    </div>
+  </section>
+
+  <!-- TAGLINE BAND -->
+  <div class="tagline-band">
+    <p>"Where clarity feels like a party — morning coffee to midnight mocktail."</p>
+  </div>
+
+  <!-- ABOUT -->
+  <section id="about" class="about">
+    <p class="eyebrow" style="text-align:center;">Our Story</p>
+    <h2 class="section-title">The first dedicated sober<br>social venue in the Twin Cities.</h2>
+    <div class="divider-line"></div>
+    <p class="section-body">Howl & Bloom is a first-of-its-kind destination — a warm, craft coffee house by day and a sophisticated, fully alcohol-free social lounge by evening. The name nods to its inspiration: Howl at the Moon, a pioneering sober bar in Thunder Bay, Ontario, and the idea of blooming into a fuller, more intentional life.<br><br>Hopkins is the ideal home — a walkable, community-minded Twin Cities neighborhood with the local character and foot traffic that makes a genuine third place thrive.</p>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience" class="experience">
+    <div class="experience-inner">
+      <div class="exp-header">
+        <p class="eyebrow">One Place, All Day</p>
+        <h2 class="section-title">The Experience</h2>
+      </div>
+      <div class="exp-grid">
+        <div class="exp-card">
+          <p class="exp-time">6am – 11am</p>
+          <h3 class="exp-mode">Coffee House</h3>
+          <p class="exp-desc">Specialty pour-overs, seasonal lattes, house-baked pastries, breakfast sandwiches. Craft coffee with genuine care.</p>
+        </div>
+        <div class="exp-card">
+          <p class="exp-time">11am – 3pm</p>
+          <h3 class="exp-mode">Café &amp; Lunch</h3>
+          <p class="exp-desc">Light lunch — grain bowls, soups, avocado toast. A calm, welcoming space for remote workers and local regulars.</p>
+        </div>
+        <div class="exp-card">
+          <p class="exp-time">3pm – 7pm</p>
+          <h3 class="exp-mode">Golden Hour</h3>
+          <p class="exp-desc">Mocktail specials, adaptogen drinks, craft sodas. Live acoustic or DJ sets on weekends. The energy shifts.</p>
+        </div>
+        <div class="exp-card">
+          <p class="exp-time">7pm – 11pm</p>
+          <h3 class="exp-mode">Sober Bar</h3>
+          <p class="exp-desc">Full zero-proof bar: house signature mocktails, NA wines and spirits. Elevated atmosphere, trivia nights, community events.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section class="stats">
+    <div class="stats-inner">
+      <div class="stats-header">
+        <p class="eyebrow">The Market Opportunity</p>
+        <h2 class="section-title">The sober movement<br><em>has become a cultural shift.</em></h2>
+      </div>
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-number">54%</div>
+          <div class="stat-label">of U.S. adults now consume alcohol — a record low</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">$4B</div>
+          <div class="stat-label">projected U.S. NA beverage market by 2027</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">70%</div>
+          <div class="stat-label">growth in NA spirits &amp; RTD mocktails, 2024–2025</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">93%</div>
+          <div class="stat-label">of NA buyers also purchase alcoholic drinks</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHO WE SERVE -->
+  <section id="community" class="who">
+    <div class="who-header">
+      <p class="eyebrow">Community</p>
+      <h2 class="section-title">Who We Serve</h2>
+    </div>
+    <div class="who-grid">
+      <div class="who-card">
+        <h3 class="who-title">People Living Sober</h3>
+        <p class="who-desc">In recovery, by choice, or health necessity — you deserve a vibrant social scene built around you, not an afterthought corner of a bar.</p>
+      </div>
+      <div class="who-card">
+        <h3 class="who-title">The Sober Curious</h3>
+        <p class="who-desc">Half of Americans say they'd like to drink less, but social settings make it hard. Howl & Bloom removes that friction entirely.</p>
+      </div>
+      <div class="who-card">
+        <h3 class="who-title">Gen X &amp; Middle Age</h3>
+        <p class="who-desc">The fastest-growing NA spender cohort, now in their 40s–50s, who want community and energy without the next-day consequences.</p>
+      </div>
+      <div class="who-card">
+        <h3 class="who-title">Families</h3>
+        <p class="who-desc">An evening destination where kids are genuinely welcome and parents don't have to choose between a fun night out and responsibility.</p>
+      </div>
+      <div class="who-card">
+        <h3 class="who-title">The Mainstream</h3>
+        <p class="who-desc">93% of NA buyers also drink alcohol — they simply want options. For anyone who wants to mark a moment without it impacting tomorrow.</p>
+      </div>
+      <div class="who-card">
+        <h3 class="who-title">Remote Workers</h3>
+        <p class="who-desc">A warm third place for the Twin Cities' growing work-from-home community. Good coffee, good energy, no pressure to leave.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- DIFFERENTIATORS -->
+  <section class="different">
+    <div class="different-inner">
+      <p class="eyebrow">What Makes Us Different</p>
+      <h2 class="section-title">Not a limitation.<br><em>The entire premise.</em></h2>
+      <ul class="diff-list">
+        <li class="diff-item">
+          <strong>No Alcohol. Ever.</strong>
+          The whole experience is designed around it — not despite it.
+        </li>
+        <li class="diff-item">
+          <strong>A Real Bar Experience</strong>
+          Proper glassware, skilled bartenders, and a curated menu of zero-proof cocktails, NA wines, and functional drinks. Not soda. Craft.
+        </li>
+        <li class="diff-item">
+          <strong>First of Its Kind in the Metro</strong>
+          The Twin Cities have no dedicated sober social venue. The Zero Proof Collective says the community is ready — they just need the space.
+        </li>
+        <li class="diff-item">
+          <strong>Full-Day Revenue Model</strong>
+          Morning coffee shop volume funds operations and builds the daily habit. The evening lounge is the heart. Both reinforce each other.
+        </li>
+        <li class="diff-item">
+          <strong>Community Programming</strong>
+          Trivia nights, live music, recovery-friendly gatherings, wellness events, seasonal celebrations — a calendar that builds regulars.
+        </li>
+        <li class="diff-item">
+          <strong>Riding a Generational Wave</strong>
+          Forbes, the US Chamber of Commerce, Mpls.St.Paul Magazine — every signal points the same direction. The timing is right.
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- CTA / CONTACT -->
+  <section id="contact" class="cta">
+    <p class="eyebrow" style="text-align:center;">Coming 2026</p>
+    <h2 class="section-title">Opening in Hopkins, Minnesota.</h2>
+    <p>Be the first to know when we open our doors — and help us build the community from day one.</p>
+    <div class="cta-buttons">
+      <a href="mailto:hello@howlandbloom.com" class="btn btn-filled">Get in Touch</a>
+      <a href="#" class="btn">Sign Up for Updates</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div>
+      <div class="footer-logo">Howl <span>&amp; Bloom</span></div>
+      <p class="footer-sub">Coffee House · Sober Social Lounge · Hopkins, Minnesota</p>
+    </div>
+    <div class="footer-right">
+      <p><a href="mailto:hello@howlandbloom.com">hello@howlandbloom.com</a></p>
+      <p style="margin-top:6px;">Est. 2026 · <a href="https://howlandbloom.com">howlandbloom.com</a></p>
+      <p style="margin-top:12px; color: #3A4460; font-size:11px;">"The best nights don't need a hangover."</p>
+    </div>
+  </footer>
+
+</body>
+</html>
